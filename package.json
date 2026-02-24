@@ -1,0 +1,81 @@
+{
+    "name": "antigravity-quota-watcher",
+    "displayName": "Antigravity Quota Watcher",
+    "description": "Live Antigravity/Gemini quota monitoring directly in VS Code",
+    "version": "0.1.0",
+    "publisher": "dhruvs",
+    "engines": {
+        "vscode": "^1.85.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "antigravity-quota",
+                    "title": "Antigravity Quota",
+                    "icon": "resources/rocket.svg"
+                }
+            ]
+        },
+        "views": {
+            "antigravity-quota": [
+                {
+                    "id": "antigravityQuotaView",
+                    "name": "Model Quotas"
+                }
+            ]
+        },
+        "commands": [
+            {
+                "command": "antigravity-quota.signIn",
+                "title": "Antigravity Quota: Sign In"
+            },
+            {
+                "command": "antigravity-quota.signOut",
+                "title": "Antigravity Quota: Sign Out"
+            },
+            {
+                "command": "antigravity-quota.refresh",
+                "title": "Antigravity Quota: Refresh",
+                "icon": "$(refresh)"
+            }
+        ],
+        "menus": {
+            "view/title": [
+                {
+                    "command": "antigravity-quota.refresh",
+                    "when": "view == antigravityQuotaView",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "configuration": {
+            "title": "Antigravity Quota Watcher",
+            "properties": {
+                "antigravityQuota.pollIntervalSeconds": {
+                    "type": "number",
+                    "default": 30,
+                    "minimum": 10,
+                    "description": "How often to refresh quota data (in seconds)"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    },
+    "devDependencies": {
+        "@types/node": "^20.0.0",
+        "@types/vscode": "^1.85.0",
+        "typescript": "^5.3.0"
+    }
+}
