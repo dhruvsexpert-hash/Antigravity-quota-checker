@@ -1,6 +1,6 @@
 # Antigravity Quota Watcher
 
-Live Antigravity/Gemini quota monitoring directly in VS Code.
+Live Antigravity/Gemini quota monitoring directly in Antigravity.
 
 This VS Code extension provides a convenient way to monitor your Antigravity/Gemini API quota without leaving your editor. It adds a new view to your activity bar that displays your current quota usage for different models and shows a summary in the status bar.
 
